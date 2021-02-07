@@ -8,6 +8,7 @@ const { getUsers, deleteUser } = require("../controllers/users");
 //auth
 const { register } = require("../controllers/register");
 
+const { login } = require("../controllers/login");
 
 //books
 const {
@@ -31,5 +32,6 @@ router.delete("/book/:id", deleteBook);
 
 router.post("/register", register);
 
+router.post("/login", login)
 
 module.exports = router;
