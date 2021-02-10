@@ -20,6 +20,17 @@ exports.register = async (req, res) => {
         error: error.details[0].message,
       });
 
+    const checkEmail = await User.findOne({
+      where: {
+        email,
+      },
+    });
+
+    if (checkEmail)
+      return res.status(400).send({
+        message: "email already registered",
+      });
+
     const hashedStrength = 10;
     const hashedPassword = await bcrypt.hash(password, hashedStrength);
 
